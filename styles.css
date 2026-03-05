@@ -1,0 +1,372 @@
+/* NSW-style training module look (static, GitHub Pages friendly)
+   Palette taken from your current app: navy / teal / pink
+*/
+
+:root{
+  --navy: #2d3f2e;
+  --teal: #6c7659;
+  --pink: #d6d1c7;
+
+  --card: #ffffff;
+  --text: #12212b;
+  --muted: rgba(18,33,43,0.75);
+  --border: rgba(18,33,43,0.10);
+}
+
+*{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+}
+
+/* Full-screen solid background */
+.screen{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 28px 16px 92px; /* leave room for bottom nav */
+  background: var(--bg, var(--navy));
+}
+
+.top-illustration{
+  width:100%;
+  max-height:180px;
+  object-fit:contain;
+  margin-bottom:20px;
+}
+
+.point-box{
+  background:#f5f7fb;
+  border-radius:12px;
+  padding:22px;
+  font-size:22px;
+  line-height:1.6;
+  margin-top:14px;
+  text-align: center;
+}
+
+.point-nav{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+  margin-top:14px;
+}
+
+.point-arrow{
+  border:none;
+  background:#e6e6e6;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  font-size:20px;
+  cursor:pointer;
+}
+
+.point-counter{
+  font-size:14px;
+  opacity:0.7;
+}
+
+
+/* Center white card */
+.card{
+  width: min(980px, 96vw);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 14px 34px rgba(0,0,0,0.14);
+  overflow: hidden;
+}
+
+/* Slide layout inside card */
+.slide{
+  position: relative;
+  padding: 28px 28px 26px;
+}
+
+@media (max-width: 640px){
+  .slide{ padding: 22px 18px 20px; }
+}
+
+/* Header + typography */
+.slide-header{ padding-right: 132px; }
+.slide-kicker{
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 8px 0;
+}
+.slide-title{
+  font-size: 44px;
+  line-height: 1.15;
+  margin: 0 0 14px 0;
+  color: var(--text);
+  font-weight: 750;
+}
+.slide-body{
+  font-size: 30px;
+  line-height: 1.55;
+  color: var(--text);
+}
+.slide-body ul{
+  margin: 12px 0 0 18px;
+  padding: 0;
+}
+.slide-body li{ margin: 10px 0; }
+
+/* Media block (image/video) */
+.slide-media{
+  margin-top: 18px;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #f6f8fa;
+}
+.slide-media img{
+  display:block;
+  width:75%;
+  max-width:650px;
+  height:auto;
+  margin:0 auto;
+}
+
+/* Caption text */
+.caption{
+  max-width: 760px;
+  margin: 24px auto 0;
+  font-size: 22px;
+  line-height: 1.6;
+  color: #2b2b2b;
+  text-align: center;
+}
+
+/* Cover: overlay title/sub on the image */
+.cover-slide{ padding: 0; }
+
+.cover-hero{
+  position: relative;
+  width: 100%;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.cover-hero-img{
+  display:block;
+  width:100%;
+  max-height:95vh;
+  object-fit:cover;
+}
+
+.cover-overlay{
+  position: absolute;
+  left: 42px;
+  top: 36%;
+  transform: translateY(-50%);
+  color: #fff;
+  max-width: 70%;
+}
+
+.cover-overlay-title{
+  margin: 0 0 10px 0;
+  font-size: 75px;
+  line-height: 1.1;
+  font-weight: 850;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+.cover-overlay-sub{
+  font-size: 25px;
+  line-height: 1.5;
+  opacity: 0.95;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+
+.cover-logo{
+  position:absolute;
+  left: 22px;
+  bottom: 18px;
+  height: 94px;
+  width:auto;
+}
+
+/* Mobile */
+@media (max-width: 640px){
+  .cover-overlay{ left: 22px; top: 34%; max-width: 84%; }
+  .cover-overlay-title{ font-size: 34px; }
+  .cover-logo{ left: 16px; bottom: 14px; height: 38px; }
+}
+
+/* Cover / End slide special layout */
+.cover-grid{
+  display:grid;
+  gap:18px;
+}
+.cover-title{
+  font-size: 40px;
+  line-height: 1.08;
+  margin: 0;
+  font-weight: 800;
+}
+.cover-sub{
+  margin: 8px 0 0 0;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.5;
+}
+.logo-row{
+  display:flex;
+  justify-content:flex-end;
+  margin-top: 6px;
+}
+.logo-row img{
+  height: 44px;
+  width: auto;
+  opacity: 0.95;
+}
+
+/* TTS buttons */
+.tts-topright{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+.tts-btn{
+  border: 1px solid var(--border);
+  background: rgba(255,255,255,0.92);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.tts-btn:active{ transform: translateY(1px); }
+
+/* Tooltip (kept from your current app) */
+.tooltip{
+  position:relative;
+  cursor:help;
+  border-bottom:2px dotted rgba(18,33,43,0.55);
+}
+.tooltip-box{
+  position:absolute;
+  bottom:120%;
+  left:50%;
+  transform:translateX(-50%);
+  width:240px;
+  background:#222;
+  color:#fff;
+  padding:10px 12px;
+  border-radius:10px;
+  font-size:16px;
+  line-height:1.35;
+  text-align:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity 0.18s ease;
+  z-index:10;
+}
+.tooltip:hover .tooltip-box{ opacity:1; }
+
+/* Image tooltip variant */
+.tooltip-image .tooltip-box{
+  width: 220px;
+  padding: 8px;
+  text-align: center;
+}
+.tooltip-img{
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+.tooltip-caption{
+  display:block;
+  font-size:14px;
+  margin-top:6px;
+  color:#ddd;
+}
+
+/* Bottom navigation (NSW-style) */
+.navbar{
+  position: fixed;
+  left: 0; right: 0;
+  bottom: 18px;
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+}
+.navbar-inner{
+  width: min(980px, 96vw);
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  align-items: center;
+  gap: 14px;
+
+  background: rgba(255,255,255,0.78);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: 999px;
+  padding: 10px 12px;
+}
+
+.navbtn{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.14);
+  background: rgba(255,255,255,0.92);
+  cursor: pointer;
+  font-size: 20px;
+}
+.navbtn:disabled{ opacity: 0.35; cursor: not-allowed; }
+
+.dots{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  background: rgba(0,0,0,0.25);
+}
+.dot.is-active{ background: rgba(0,0,0,0.75); }
+
+.continue{
+  border: 0;
+  cursor: pointer;
+  padding: 12px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 16px;
+  background: var(--navy);
+  color: #fff;
+}
+.continue:disabled{ opacity: 0.45; cursor: not-allowed; }
+
+/* Point carousel dots (inside Page 2/3/4 cards) */
+.point-dots{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top: 12px;
+}
+.point-dots .dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  background: rgba(0,0,0,0.25);
+}
+.point-dots .dot.is-active{ background: rgba(0,0,0,0.75); }
