@@ -58,9 +58,7 @@ function renderPointCarousel(pageIndex) {
         <h2 class="slide-title">${title}</h2>
       </div>
 
-      <div class="slide-media">
-        <img data-carousel-img src="" alt="" />
-      </div>
+      <div class="slide-media" data-carousel-media></div>
 
       <div class="point-box" data-carousel-text></div>
 
@@ -83,7 +81,7 @@ function initPointCarousel(root, page) {
   const textEl = root.querySelector("[data-carousel-text]");
   const counterEl = root.querySelector("[data-carousel-counter]");
   const dotsEl = root.querySelector("[data-carousel-dots]");
-
+  const mediaEl = root.querySelector("[data-carousel-media]");
   const readBtn = root.querySelector(".tts-btn[data-tts]");
 
   let idx = 0;
@@ -113,10 +111,31 @@ function initPointCarousel(root, page) {
   function renderPoint() {
     const pt = page.points[idx];
 
-    if (imgEl) {
-      imgEl.src = pt.img || "";
-      imgEl.alt = pt.alt || "";
-    }
+          if (mediaEl) {
+        if (pt.flipImg) {
+          mediaEl.innerHTML = `
+            <button type="button" class="flip-card" data-flip-card aria-label="Reveal the Fire Warden">
+              <div class="flip-card-inner">
+                <div class="flip-card-face flip-card-front">
+                  <img src="${pt.img || ""}" alt="${pt.alt || ""}" />
+                </div>
+                <div class="flip-card-face flip-card-back">
+                  <img src="${pt.flipImg}" alt="Photo of the Fire Warden" />
+                  <div class="flip-message">${pt.flipMessage || ""}</div>
+                </div>
+              </div>
+            </button>
+          `;
+      
+          mediaEl.querySelector("[data-flip-card]")?.addEventListener("click", function () {
+            this.classList.toggle("is-flipped");
+          });
+        } else {
+          mediaEl.innerHTML = `
+            <img data-carousel-img src="${pt.img || ""}" alt="${pt.alt || ""}" />
+          `;
+        }
+      }
     if (textEl) textEl.innerHTML = pt.html || "";
     if (counterEl) counterEl.textContent = `${idx + 1} / ${page.points.length}`;
 
@@ -206,12 +225,15 @@ const PAGES = [
   {
     img: "assets/page2-3.png",
     alt: "Fire warden",
+    flipImg: "assets/zhiyuan.jpg",
+    flipMessage: "🎉 Congratulations! 🎉<br>You found the Fire Warden!",
     html: `
       <p><strong>Fire warden</strong></p>
       <p>Listen to instructions from the <strong>fire warden</strong>.</p>
       <p>A fire warden is the person who helps everyone evacuate safely.</p>
+       <p><em>Click the image to reveal who the Fire Warden is.</em></p>
     `,
-    tts: "Fire warden. Listen to instructions from the fire warden. A fire warden is the person who helps everyone evacuate safely."
+    tts: "Fire warden. Listen to instructions from the fire warden. A fire warden is the person who helps everyone evacuate safely. Click the image to reveal who the Fire Warden is."
   },
 
   {
