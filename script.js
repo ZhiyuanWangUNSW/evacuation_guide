@@ -127,9 +127,13 @@ function initPointCarousel(root, page) {
             </button>
           `;
       
-          mediaEl.querySelector("[data-flip-card]")?.addEventListener("click", function () {
-            this.classList.toggle("is-flipped");
-          });
+                  mediaEl.querySelector("[data-flip-card]")?.addEventListener("click", function () {
+          const flipped = this.classList.toggle("is-flipped");
+        
+          if (flipped && pt.flipMessage) {
+            speak(pt.flipMessage.replace(/<br>/g," "));
+          }
+        });
         } else {
           mediaEl.innerHTML = `
             <img data-carousel-img src="${pt.img || ""}" alt="${pt.alt || ""}" />
@@ -226,7 +230,7 @@ const PAGES = [
     img: "assets/page2-3.png",
     alt: "Fire warden",
     flipImg: "assets/zhiyuan.JPG",
-    flipMessage: "🎉 Congratulations! 🎉<br>You found the Fire Warden!",
+    flipMessage: "🎉 Congratulations! 🎉<br>You found the Fire Warden! It is Zhiyuan",
     html: `
       <p><strong>Fire warden</strong></p>
       <p>Listen to instructions from the <strong>fire warden</strong>.</p>
