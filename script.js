@@ -225,7 +225,7 @@ const PAGES = [
   {
     img: "assets/page2-3.png",
     alt: "Fire warden",
-    flipImg: "assets/zhiyuan.jpg",
+    flipImg: "assets/zhiyuan.JPG",
     flipMessage: "🎉 Congratulations! 🎉<br>You found the Fire Warden!",
     html: `
       <p><strong>Fire warden</strong></p>
